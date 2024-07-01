@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'Vite' => \Illuminate\Support\Facades\Vite::class,
 ];

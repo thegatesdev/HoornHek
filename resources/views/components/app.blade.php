@@ -9,10 +9,22 @@
 
     <title>Home</title>
 
+    <link rel="icon" type="image/png" sizes="256x256"
+        href="{{ Vite::asset('resources/icons/app/logo_white_256.png') }}">
+    <link rel="icon" type="image/png" sizes="180x180"
+        href="{{ Vite::asset('resources/icons/app/logo_white_180.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ Vite::asset('resources/icons/app/logo_white_180.png') }}">
+    <link rel="icon" type="image/png" sizes="128x128"
+        href="{{ Vite::asset('resources/icons/app/logo_white_128.png') }}">
+    <link rel="icon" type="image/png" sizes="64x64"
+        href="{{ Vite::asset('resources/icons/app/logo_white_64.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ Vite::asset('resources/icons/app/logo_white_32.png') }}">
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{ $headAfter ?? '' }}
 </head>
