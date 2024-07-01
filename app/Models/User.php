@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 class User extends Authenticatable
 {
@@ -24,7 +25,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = [
+        'actions'
+    ];
+
     public $timestamps = true;
+
+    protected ?Collection $cachedActions;
 
     protected function casts(): array
     {
@@ -42,5 +49,26 @@ class User extends Authenticatable
     public function locations(): BelongsToMany
     {
         return $this->belongsToMany(Location::class);
+    }
+
+    public function can_do(string $action): bool
+    {
+        return $this->actions->contains($action);
+    }
+
+    public function getActionsAttribute(): Collection
+    {
+        if (isset($this->cachedActions)) {
+            return $this->cachedActions;
+        }
+
+        return $this->cachedActions = $this->groups->map(function ($group) {
+            return $group->actions;
+        })->collapse()->pluck('key')->unique();
+    }
+
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class);
     }
 }

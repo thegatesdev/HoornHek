@@ -3,11 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\Action;
+use App\Models\ActionLog;
 use App\Models\ActionType;
 use App\Models\CaseModel;
 use App\Models\CellOccupation;
 use App\Models\Evidence;
+use App\Models\Group;
 use App\Models\Location;
+use App\Models\Permission;
 use App\Models\Prisoner;
 use App\Models\User;
 use Database\Factories\ActionFactory;
@@ -19,15 +22,25 @@ class DatabaseSeeder extends Seeder
     {
         $location = Location::factory()->createOne();
         $users = User::factory(10)->create();
-        $actionTypes = ActionType::all();
+        $groups = Group::factory(5)->create();
+        $actions = Action::all('id');
+        foreach ($groups as $group) {
+            for ($i = 0; $i < fake()->numberBetween(10, 20); $i++) {
+                $group->actions()->attach($actions->find($i));
+            }
+        }
         foreach ($users as $user) {
             $user->locations()->attach($location);
             $actionCount = fake()->numberBetween(1, 50);
+
             for ($i = 0; $i < $actionCount; $i++) {
-                Action::factory()->create([
+                ActionLog::factory()->create([
                     'user_id' => $user,
-                    'action_type_id' => $actionTypes->random(),
+                    'action_id' => $actions->random(),
                 ]);
+            }
+            foreach ($groups->random(2) as $group) {
+                $user->groups()->attach($group);
             }
         }
 
@@ -53,5 +66,17 @@ class DatabaseSeeder extends Seeder
                 'case_id' => $case,
             ]);
         }
+
+        // $randomUser = User::all()->random();
+        // echo "Random user: " . $randomUser->profile->first_name . PHP_EOL;
+        // foreach ($randomUser->locations as $location) {
+        //     echo "In: " . $location->city . PHP_EOL;
+        // }
+        // foreach ($randomUser->groups as $group) {
+        //     echo "Group: " . $group->name . PHP_EOL;
+        // }
+        // foreach ($randomUser->actions as $action) {
+        //     echo "Action: " . $action . PHP_EOL;
+        // }
     }
 }
