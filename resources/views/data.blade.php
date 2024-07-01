@@ -1,0 +1,22 @@
+<x-layout>
+    <x-header></x-header>
+    <x-content>
+        <x-main>
+            <x-viewtable>
+                <x-slot name="head">
+                    <tr>
+                        <th>Hello</th>
+                        <th>World</th>
+                        <th>Header</th>
+                    </tr>
+                </x-slot>
+                <tr>
+                    <td>Thing</td>
+                    <td>Is</td>
+                    <td>Cool</td>
+                </tr>
+            </x-viewtable>
+        </x-main>
+        <x-sidebar></x-sidebar>
+    </x-content>
+</x-layout>

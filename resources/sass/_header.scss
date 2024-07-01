@@ -1,0 +1,36 @@
+#header
+{
+    height: 60px;
+
+    display: flex;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background: var(--col-primary);
+
+    #logo
+    {
+        width: auto;
+        height: 100%;
+        max-height: 100px;
+    }
+}
+
+#navigation
+{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    div
+    {
+        display: flex;
+        flex-direction: row;
+    }
+}
