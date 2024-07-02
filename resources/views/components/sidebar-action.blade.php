@@ -1,6 +1,8 @@
-@props(['title' => 'None'])
+@props(['title'])
 
 <div class="sidebar-action">
-    <h1>{{ $title }}</h1>
+    @isset($title)
+        <h1>{{ $title }}</h1>
+    @endisset
     {{ $slot }}
 </div>

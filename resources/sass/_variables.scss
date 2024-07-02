@@ -1,13 +1,22 @@
 :root
 {
-    --font-body: "Segoe UI", "Oxygen", "Ubuntu", "Roboto", "Cantarell",
-        "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+    --font-body: "Agency FB", sans-serif;
+    --font-size-normal: 20px;
+    --font-weight-normal: bold;
 
+    --col-bg: #b8b8c2;
     --col-primary: #1F2237;
     --col-primary-tint: #333B50;
     --col-secondary: #5D3621;
     --col-secondary-tint: #724E2F;
 
-    --col-text: #c0c0c0;
+    --col-data-accent: #3B4E75;
+    --col-data-item: #abbcdd;
+    --col-data-item-tint-light: #99abcf;
+    --col-data-item-tint-dark: #8999b8;
+
+    --col-action: #191de6;
+
+    --col-text: #ececec;
+    --col-text-data: #000;
 }

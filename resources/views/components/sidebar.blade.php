@@ -1,3 +1,3 @@
 <div id="sidebar">
-    @include('components.parts.sidebar-items')
+    {{ $slot }}
 </div>
