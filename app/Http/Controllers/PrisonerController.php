@@ -16,31 +16,42 @@ class PrisonerController extends Controller
 
     public function create()
     {
-        //
+        return view('app.prisoner.edit');
     }
 
     public function store(Request $request)
     {
-        //
+        $prisoner = Prisoner::find($request->id);
+        $prisoner->profile->fill($request->all());
+        $prisoner->profile->save();
+
+        return to_route('prisoners.show', ['prisoner' => $prisoner]);
     }
 
     public function show(string $id)
     {
-        //
+        $prisoner = Prisoner::find($id);
+
+        return view('app.prisoner.show', ['profile' => $prisoner->profile, 'prisoner' => $prisoner]);
     }
 
     public function edit(string $id)
     {
-        //
+        $prisoner = Prisoner::find($id);
+
+        return view('app.prisoner.edit', ['profile' => $prisoner->profile, 'prisoner' => $prisoner]);
     }
 
     public function update(Request $request, string $id)
     {
-        //
+
+        return to_route('prisoners.show', ['id' => $id]);
     }
 
     public function destroy(string $id)
     {
-        //
+        Prisoner::find($id)->delete();
+
+        return to_route('app.prisoners.index');
     }
 }

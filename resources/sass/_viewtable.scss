@@ -16,6 +16,11 @@
         background: var(--col-data-item);
         color: var(--col-text-data);
 
+        a
+        {
+            color: var(--col-text-data);
+        }
+
         tr:hover
         {
             background: var(--col-data-item-tint-light);

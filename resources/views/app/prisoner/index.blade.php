@@ -19,6 +19,10 @@
                         <td>{{ $prisoner->profile->first_name . ' ' . $prisoner->profile->last_name }}</td>
                         <td>{{ $prisoner->profile->date_of_birth }}</td>
                         <td>{{ $prisoner->profile->city }}</td>
+                        <td>
+                            <a href="{{ route('prisoners.show', $prisoner->id) }}">O</a>
+                            <a href="{{ route('prisoners.edit', $prisoner->id) }}">I</a>
+                        </td>
                     </tr>
                 @endforeach
             </x-viewtable>

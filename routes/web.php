@@ -8,9 +8,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/app', function () {
-    return view('app.index');
+Route::prefix('app')->group(function () {
+    Route::redirect('/', 'prisoners');
+    Route::resource('prisoners', PrisonerController::class);
+    Route::resource('logs', ActionLogController::class);
 });
-
-Route::resource('prisoners', PrisonerController::class);
-Route::resource('logs', ActionLogController::class);

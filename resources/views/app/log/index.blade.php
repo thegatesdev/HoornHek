@@ -12,6 +12,7 @@
                         <th>Actie</th>
                         <th>Beschrijving</th>
                         <th>Tijd</th>
+                        <th>Actie</th>
                     </tr>
                 </x-slot>
                 @foreach ($logs as $log)
@@ -20,6 +21,7 @@
                         <td>{{ $log->action->name_past }}</td>
                         <td>{{ $log->change ?? '' }}</td>
                         <td>{{ $log->created_at }}</td>
+                        <td></td>
                     </tr>
                 @endforeach
             </x-viewtable>
