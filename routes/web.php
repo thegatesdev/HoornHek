@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('app')->group(function () {
-    Route::redirect('/', 'prisoners');
+    Route::redirect('/', '/app/prisoners');
     Route::resource('prisoners', PrisonerController::class);
     Route::resource('logs', ActionLogController::class);
 });
